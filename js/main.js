@@ -5,7 +5,7 @@ function initialize(){
 
 //function to create a table with cities and their populations
 function cities(){
-    //define an array of objects for cities and population
+    //define two arrays for cities and population
     var cityPop = [
         {
             city: 'Madison',
@@ -25,44 +25,24 @@ function cities(){
         }
     ];
 
-    //create the table element
-    var table = document.createElement("table");
+    //append the table element to the div
+    $("#mydiv").append("<table>");
 
-    //create a header row
-    var headerRow = document.createElement("tr");
+    //append a header row to the table
+    $("table").append("<tr>");
 
-    //add the "City" column
-    var cityHeader = document.createElement("th");
-    cityHeader.innerHTML = "City";
-    headerRow.appendChild(cityHeader);
-
-    //add the "Population" column
-    var popHeader = document.createElement("th");
-    popHeader.innerHTML = "Population";
-    headerRow.appendChild(popHeader);
-
-    //add the row to the table
-    table.appendChild(headerRow);
+    //add the "City" and "Population" columns to the header row
+    $("tr").append("<th>City</th><th>Population</th>");
 
     //loop to add a new row for each city
     for (var i = 0; i < cityPop.length; i++){
-    var tr = document.createElement("tr");
-
-    var city = document.createElement("td");
-    city.innerHTML = cityPop[i].city; //NOTE DIFFERENT SYNTAX
-    tr.appendChild(city);
-
-    var pop = document.createElement("td");
-    pop.innerHTML = cityPop[i].population; //NOTE DIFFERENT SYNTAX
-    tr.appendChild(pop);
-
-    table.appendChild(tr);
+        //assign longer html strings to a variable
+        var rowHtml = "<tr><td>" + cityPop[i].city + "</td><td>" + cityPop[i].population + "</td></tr>";
+        //add the row's html string to the table
+        $("table").append(rowHtml);
+    };
 };
 
-    //add the table to the div in index.html
-    var mydiv = document.getElementById("mydiv");
-    mydiv.appendChild(table);
-};
 
-//call the initialize function when the window has loaded
-window.onload = initialize();
+//call the initialize function when the document has loaded
+$(document).ready(initialize);
