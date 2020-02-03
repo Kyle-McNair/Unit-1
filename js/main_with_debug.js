@@ -100,6 +100,7 @@ function addEvents(){
 			//color values.
 			if (i<2){
 				color += ",";
+			//also helps to list out each rgb value.
 			//if i is between the values of 2-3, it will end a parenthesis at the end.
 			} else {
 				color += ")";
